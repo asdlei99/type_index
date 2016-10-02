@@ -15,6 +15,14 @@ BOOST_TYPE_INDEX_CTTI_USER_DEFINED_PARSING.html
 BOOST_TYPE_INDEX_USER_TYPEINDEX.html
 BOOST_TYPE_INDEX_FORCE_NO_RTTI_COMPATIBILITY.html
 boost/typeindex/ctti_type_index.html
+boost/typeindex/runtime__idm45899029559488.html
+boost/typeindex/runtime__idm45899029551872.html
+boost/typeindex/runtime__idm45899029544016.html
+boost/typeindex/bad_runtime_cast.html
+boost/typeindex/runtime__idm45899029532112.html
+BOOST_TYPE_INDEX_REGISTER_RUNTIME_CLASS.html
+BOOST_TYPE_INDEX_NO_BASE_CLASS.html
+boost/typeindex/runtime__idm45899029512816.html
 boost/typeindex/stl_type_index.html
 boost/typeindex/type_index_facade.html
 boost/typeindex/hash_value.html
