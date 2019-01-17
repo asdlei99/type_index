@@ -79,10 +79,19 @@
     <span class="keyword">template</span> <span class="special">&lt;&gt;</span> <span class="keyword">struct</span> <span class="identifier">typenum</span><span class="special">&lt;</span><span class="identifier">my_classes</span><span class="special">&gt;{</span> <span class="keyword">enum</span> <span class="special">{</span><span class="identifier">value</span> <span class="special">=</span> <span class="number">3</span><span class="special">};</span> <span class="special">};</span>
     <span class="keyword">template</span> <span class="special">&lt;&gt;</span> <span class="keyword">struct</span> <span class="identifier">typenum</span><span class="special">&lt;</span><span class="identifier">my_string</span><span class="special">&gt;{</span>  <span class="keyword">enum</span> <span class="special">{</span><span class="identifier">value</span> <span class="special">=</span> <span class="number">4</span><span class="special">};</span> <span class="special">};</span>
 
+<span class="preprocessor">#ifdef</span> <span class="identifier">BOOST_MSVC</span>
+<span class="preprocessor">#pragma</span> <span class="identifier">warning</span><span class="special">(</span><span class="identifier">push</span><span class="special">)</span>
+<span class="preprocessor">#pragma</span> <span class="identifier">warning</span><span class="special">(</span><span class="identifier">disable</span><span class="special">:</span> <span class="number">4510</span> <span class="number">4512</span> <span class="number">4610</span><span class="special">)</span> <span class="comment">// non-copyable non-constructable type</span>
+<span class="preprocessor">#endif</span>
+
     <span class="comment">// my_typeinfo structure is used to save type number</span>
     <span class="keyword">struct</span> <span class="identifier">my_typeinfo</span> <span class="special">{</span>
         <span class="keyword">const</span> <span class="keyword">char</span><span class="special">*</span> <span class="keyword">const</span> <span class="identifier">type_</span><span class="special">;</span>
     <span class="special">};</span>
+
+<span class="preprocessor">#ifdef</span> <span class="identifier">BOOST_MSVC</span>
+<span class="preprocessor">#pragma</span> <span class="identifier">warning</span><span class="special">(</span><span class="identifier">pop</span><span class="special">)</span>
+<span class="preprocessor">#endif</span>
 
     <span class="keyword">const</span> <span class="identifier">my_typeinfo</span> <span class="identifier">infos</span><span class="special">[</span><span class="number">5</span><span class="special">]</span> <span class="special">=</span> <span class="special">{</span>
         <span class="special">{</span><span class="string">"void"</span><span class="special">},</span> <span class="special">{</span><span class="string">"my_class"</span><span class="special">},</span> <span class="special">{</span><span class="string">"my_struct"</span><span class="special">},</span> <span class="special">{</span><span class="string">"my_classes"</span><span class="special">},</span> <span class="special">{</span><span class="string">"my_string"</span><span class="special">}</span>
@@ -102,6 +111,11 @@
         files. Documentation for <code class="computeroutput"><span class="identifier">type_index_facade</span></code>
         could be also useful.
       </p>
+<p>
+        Since we are not going to override <code class="computeroutput"><span class="identifier">type_index_facade</span><span class="special">::</span><span class="identifier">hash_code</span><span class="special">()</span></code> we must additionally include <code class="computeroutput"><span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">container_hash</span><span class="special">/</span><span class="identifier">hash</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span></code>.
+      </p>
+<pre class="programlisting"><span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">container_hash</span><span class="special">/</span><span class="identifier">hash</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
 <p>
         See implementation of <code class="computeroutput"><span class="identifier">my_type_index</span></code>:
       </p>
@@ -272,7 +286,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2012-2016 Antony Polukhin<p>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2012-2019 Antony Polukhin<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
